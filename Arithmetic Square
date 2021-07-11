@@ -1,0 +1,57 @@
+#include <iostream>
+#include <math.h>
+#include <algorithm>
+#include <iomanip>
+#include <set>
+#include <string.h>
+#include <map>
+#include <vector>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    for(int i = 1;i<=t;i++){
+        long long int x1,y1,z1,x2,z2,x3,y3,z3,maxi = -1,ans = 0;
+        cin>>x1>>y1>>z1>>x2>>z2>>x3>>y3>>z3;
+        map<long long int,long long int> mp;
+        if((x3+z1)%2 == 0){
+            long long int ele=(x3+z1)/2;
+            if(mp.find(ele) == mp.end()) mp[ele] = 1;
+            else mp[ele]++;
+            }
+            if((y1+y3)%2 == 0){
+            long long int ele=(y1+y3)/2;
+            if(mp.find(ele) == mp.end()) mp[ele] = 1;
+            else mp[ele]++;
+            }
+            if((x1+z3)%2 == 0){
+            long long int ele=(x1+z3)/2;
+            if(mp.find(ele) == mp.end()) mp[ele] = 1;
+            else mp[ele]++;
+            }
+            if((x2+z2)%2 == 0){
+            long long int ele=(x2+z2)/2;
+            if(mp.find(ele) == mp.end()) mp[ele] = 1;
+            else mp[ele]++;
+            }
+            for(auto it : mp){
+                long long int secondi = it.second;
+                maxi = max(maxi,secondi);
+                }
+                if(maxi!=-1) ans = ans+maxi;
+                if((x1+x3)%2 == 0 && (x1+x3)/2 == x2){
+                    ans = ans+1;
+                    }
+                    if((x3+z3)%2 == 0 && (x3+z3)/2 == y3){
+                    ans = ans+1;
+                    }
+                    if((z1+z3)%2 == 0 && (z1+z3)/2 == z2){
+                    ans = ans+1;
+                    }
+                    if((x1+z1)%2 == 0 && (x1+z1)/2 == y1){
+                    ans = ans+1;
+                    }
+                    cout<<"Case #"<<i<<": "<<ans<<endl;
+        }
+        return 0;
+    }
