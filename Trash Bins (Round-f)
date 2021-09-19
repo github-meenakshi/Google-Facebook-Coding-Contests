@@ -1,0 +1,63 @@
+#include <iostream>
+#include <vector>
+#include <math.h>
+#include <algorithm>
+#include <iomanip>
+#include <string.h>
+#include <map>
+#include <set>
+//#include <stack>
+//#include <queue>
+//#include <numeric>
+//#include <unordered_map>
+//#include <unordered_set>
+#define ll long long int
+#define ull unsigned long long int
+#define mod 1000000007
+#define loop(n) for(int i = 1;i<=n;i++) cout<<seats[i]<<" ";
+#define loopIN(n) for(int i = 0;i<n;i++) cin>>arr[i];
+#define nextln cout<<"\n";
+using namespace std;
+
+void solve(int i){
+    cout<<"Case #"<<i<<": ";
+    ll n,count_one=0,count = 0,sum = 0;
+    cin>>n;
+    string s;
+    cin>>s;
+    for(int i = 0;i<n;i++){
+        if(s[i] == '0') count++;
+        else if(s[i] == '1'){
+            if(count_one>0){
+                ll first,second;
+                if(count%2 == 1) first = count/2+1;
+                else first = count/2;
+                second = count/2;
+                sum+=((first*(first+1)/2));
+                sum+=((second*(second+1)/2));
+                }
+                else{
+                    sum+=((count)*(count+1)/2);
+                    }
+            count_one++;
+            count = 0;
+            }
+        }
+        if(count!=0){
+            sum+=((count)*(count+1)/2);
+            }
+            
+            cout<<sum<<endl;
+    }
+ 
+int main(){
+ll t = 1;
+cin>>t;
+for(int i = 1;i<=t;i++){
+solve(i);
+}
+
+return 0;
+}
+
+
